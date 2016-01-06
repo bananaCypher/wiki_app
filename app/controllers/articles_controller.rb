@@ -26,8 +26,13 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    Article.find(params[:id]).update(article_params)
-    redirect_to articles_path
+    article = Article.find(params[:id])
+    if current_user.role?('admin')
+      article.update(params.require(:article).permit(:title, :content, :image, :user_id))
+    else
+      article.update(article_params)
+    end
+    redirect_to article_path(article)
   end
 
   def destroy

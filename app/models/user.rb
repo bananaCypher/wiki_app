@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
     self.role.to_s == role_to_compare.to_s
   end
 
+  scope :author, -> { where(role: 'author') | where(role: 'admin') }
+
   has_many :articles
   has_many :comments, dependent: :destroy
 end

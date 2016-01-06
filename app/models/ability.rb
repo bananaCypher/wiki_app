@@ -12,6 +12,7 @@ class Ability
         can [:update, :destroy], Comment do |comment|
             comment.user == user
         end
+        can :create, Comment if user.id
     end
 
     if user.role? :author
