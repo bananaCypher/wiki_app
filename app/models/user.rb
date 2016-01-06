@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   end
 
   has_many :articles
+  has_many :comments, dependent: :destroy
 end

@@ -9,6 +9,9 @@ class Ability
         can :manage, :all
     else
         can :read, Article
+        can [:update, :destroy], Comment do |comment|
+            comment.user == user
+        end
     end
 
     if user.role? :author
@@ -17,6 +20,7 @@ class Ability
             article.user == user
         end
     end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
