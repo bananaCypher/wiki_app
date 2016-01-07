@@ -1,7 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+User.create!([
+  {email: "callum@email.com", encrypted_password: "$2a$10$r8ZPBV5p2DD5J2Mdec3Qp.FbBaKQxQfbn.D2nDBzM2Q8OMtxpO7ae", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 13, current_sign_in_at: "2016-01-06 17:00:28", last_sign_in_at: "2016-01-06 16:49:11", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role: "admin", name: "Callum"},
+  {email: "beth@email.com", encrypted_password: "$2a$10$f8dxp8Ckal39APXLNlRoj.FEEbbNB62GqcjofqtoHNeta0IP60hCC", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 5, current_sign_in_at: "2016-01-06 16:59:13", last_sign_in_at: "2016-01-06 15:08:22", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role: nil, name: "Beth"},
+  {email: "author@email.com", encrypted_password: "$2a$10$wEmV8VgrbknKSLvK3Vd9.uPcapT8HCLuHZkVP/rM8za1bjh0Z0EEi", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 6, current_sign_in_at: "2016-01-06 17:09:46", last_sign_in_at: "2016-01-06 16:59:53", current_sign_in_ip: "::1", last_sign_in_ip: "::1", role: "author", name: "Author"}
+])
+Article.create!([
+  {title: "Ruby", content: "![]()\r\n\r\n###Contents\r\n1. About Ruby\r\n2. stuff\r\n3. more stuff\r\n\r\n## 1. About Ruby\r\nRuby is a cool ass programming language\r\n\r\n```\r\n    puts (\"Look at me, I'm coding!\")\r\n```\r\n\r\n[Wikipedia Page](https://en.wikipedia.org/wiki/Ruby_(programming_language))", image: "http://theplexusblog.com/wp-content/uploads/2015/01/Plexus-Ruby.jpeg", user_id: 1},
+  {title: "Testing Markdown", content: "## Look at all this testing\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\n### Check this image out\r\n![shuffle](https://media.giphy.com/media/LG39g1Z7Q0Kpq/giphy.gif)\r\n\r\n### Look at this emphasised text\r\n*Italics are annoying* but **bold is cool**\r\n\r\n### And some lists\r\n1. I am the first\r\n2. I am second\r\n3. I am third\r\n\r\n* I am not ordered\r\n* Me neither\r\n\r\n### Lines too are possible\r\n---\r\n\r\n### A web link? No worries\r\n[Lets go to Google!](https://www.google.com)\r\n\r\n[Or how about the Markdown gem used?](https://github.com/vmg/redcarpet)\r\n\r\n### How about some code\r\n```gem install redcarpet```\r\n\r\n### Tabbing\r\n> I am tabbed\r\n>> I am more tabbed\r\n\r\n### And no injection\r\n<script>window.alert('uhoh')</script>", image: "", user_id: 3}
+])
+Comment.create!([
+  {user_id: 3, article_id: 1, content: "This article looks really cool!!!"},
+  {user_id: 1, article_id: 1, content: "Thanks"}
+])
